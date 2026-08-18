@@ -1,0 +1,52 @@
+{
+  "name": "@durouyusdy/openclaw-task-guardian",
+  "version": "0.1.0",
+  "description": "A deterministic supervision and compliance layer for long-running OpenClaw tasks.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "openclaw",
+    "agent",
+    "long-running-tasks",
+    "guardrails",
+    "observability"
+  ],
+  "files": [
+    "src",
+    "skills",
+    "docs",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check-project.mjs"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.5.17"
+  },
+  "openclaw": {
+    "extensions": [
+      "./src/index.js"
+    ],
+    "runtimeExtensions": [
+      "./src/index.js"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.5.17",
+      "minGatewayVersion": "2026.5.17"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuruoYusdy/openclaw-task-guardian.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DuruoYusdy/openclaw-task-guardian/issues"
+  },
+  "homepage": "https://github.com/DuruoYusdy/openclaw-task-guardian#readme",
+  "engines": {
+    "node": ">=22.22.3"
+  }
+}

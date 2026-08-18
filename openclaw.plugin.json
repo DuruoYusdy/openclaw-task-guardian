@@ -1,0 +1,96 @@
+{
+  "id": "task-guardian",
+  "name": "Task Guardian",
+  "description": "Supervises long-running tasks with durable checkpoints, bounded recovery, deterministic completion checks, and fail-closed tool policy.",
+  "version": "0.1.0",
+  "activation": {
+    "onStartup": true,
+    "onCommands": ["guardian"]
+  },
+  "contracts": {
+    "tools": ["task_guardian"]
+  },
+  "skills": ["./skills"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "mode": {
+        "type": "string",
+        "enum": ["monitor", "enforce"],
+        "default": "enforce"
+      },
+      "storagePath": {
+        "type": "string",
+        "minLength": 1,
+        "default": "~/.openclaw/task-guardian"
+      },
+      "scanIntervalMs": {
+        "type": "integer",
+        "minimum": 5000,
+        "maximum": 300000,
+        "default": 15000
+      },
+      "staleAfterMs": {
+        "type": "integer",
+        "minimum": 30000,
+        "maximum": 86400000,
+        "default": 300000
+      },
+      "maxRecoveryAttempts": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10,
+        "default": 3
+      },
+      "maxFinalizeRetries": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 3,
+        "default": 1
+      },
+      "injectProtocol": {
+        "type": "boolean",
+        "default": true
+      },
+      "autoMonitorBackground": {
+        "type": "boolean",
+        "default": true
+      },
+      "allowedAgentIds": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "uniqueItems": true,
+        "default": []
+      },
+      "deniedTools": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "uniqueItems": true,
+        "default": []
+      },
+      "approvalTools": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "uniqueItems": true,
+        "default": []
+      },
+      "protectedPaths": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "uniqueItems": true,
+        "default": []
+      },
+      "allowedVerificationRoots": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 },
+        "uniqueItems": true,
+        "default": []
+      },
+      "requireOwnerForRisky": {
+        "type": "boolean",
+        "default": true
+      }
+    }
+  }
+}
