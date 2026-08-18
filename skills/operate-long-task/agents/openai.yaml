@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operate Long Tasks"
+  short_description: "Run long OpenClaw tasks with checkpoints and verification"
+  default_prompt: "Use $operate-long-task to register, checkpoint, verify, and complete this long-running task safely."
